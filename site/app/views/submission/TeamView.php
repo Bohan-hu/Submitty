@@ -11,10 +11,15 @@ class TeamView extends AbstractView {
     * Show team management page
     * @param \app\models\gradeable\Gradeable $gradeable
     * @param \app\models\Team|null $team The team the user is on
+    * @param (\app\models\User|null)[] $members
+    * @param (\app\models\User|null)[] $seekers
+    * @param \app\models\Team[] $invites_received
+    * @param bool $seeking_partner
+    * @param bool $lock
     * @param \app\models\Team[] $teams
     * @return string
     */
-    public function showTeamPage(Gradeable $gradeable, $team, $members, $seekers, $invites_received, $seeking_partner, $lock) {
+    public function showTeamPage(Gradeable $gradeable, $team, $members, $seekers, $invites_received, bool $seeking_partner, bool $lock): string {
         $gradeable_id = $gradeable->getId();
 
         return $this->core->getOutput()->renderTwigTemplate("submission/Team.twig", [
